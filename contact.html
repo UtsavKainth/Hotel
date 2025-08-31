@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Hotel IP Residency</title>
+  <style>
+    :root {
+      --primary: #2c5530;       /* dark green */
+      --secondary: #d4af37;     /* gold */
+      --accent: #8b4513;        /* brown */
+      --light: #f8f9fa;         /* light background */
+      --dark: #2c3e50;          /* dark blue-gray */
+      --text: #333333;          /* default text */
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+      --border-radius: 15px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+    }
+
+    /* Navbar */
+      header {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        padding: 10px 30px;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .logo a {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: var(--secondary);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary);
+      }
+
+    /* Page spacing */
+    main {
+      padding-top: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Contact Form */
+    .contact-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      width: 400px;
+      text-align: center;
+    }
+
+    .contact-container h2 {
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: white;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover {
+      background: var(--secondary);
+      color: var(--dark);
+    }
+
+    #contactMessage {
+      margin-top: 15px;
+      font-size: 14px;
+      color: green;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">Hotel <span>IP</span> Residency</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html" >Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Form Section -->
+  <main>
+    <div class="contact-container">
+      <h2>Send us a Message</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="contact_name">Your Name *</label>
+          <input type="text" id="contact_name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="contact_email">Email Address *</label>
+          <input type="email" id="contact_email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="contact_subject">Subject</label>
+          <input type="text" id="contact_subject" name="subject">
+        </div>
+        <div class="form-group">
+          <label for="contact_message">Message *</label>
+          <textarea id="contact_message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      <div id="contactMessage">✅ Thank you! Your message has been sent.</div>
+    </div>
+  </main>
+
+  <script>
+    const contactForm = document.getElementById("contactForm");
+    const contactMsg = document.getElementById("contactMessage");
+
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      contactMsg.style.display = "block";
+      contactForm.reset();
+    });
+  </script>
+
+</body>
+</html>

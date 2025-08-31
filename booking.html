@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Page</title>
+    <style>
+      :root {
+        --primary: #2c5530; /* dark green */
+        --secondary: #d4af37; /* gold */
+        --accent: #8b4513; /* brown */
+        --light: #f8f9fa; /* light background */
+        --dark: #2c3e50; /* dark blue-gray */
+        --text: #333333; /* default text */
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        --border-radius: 15px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: var(--light);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 80px; /* push content below fixed navbar */
+        color: var(--text);
+      }
+
+      /* Navbar */
+      header {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        padding: 10px 30px;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .logo a {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: var(--secondary);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary);
+      }
+
+      /* Booking Form Container */
+      .booking-container {
+        background: var(--light);
+        padding: 40px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        width: 380px;
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .booking-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .booking-container h2 {
+        margin-bottom: 20px;
+        color: var(--primary);
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      /* Input fields */
+      .booking-container input,
+      .booking-container select {
+        width: 100%;
+        padding: 12px;
+        margin: 12px 0;
+        border: 1px solid var(--accent);
+        border-radius: var(--border-radius);
+        font-size: 15px;
+        color: var(--dark);
+        transition: var(--transition);
+      }
+
+      .booking-container input:focus,
+      .booking-container select:focus {
+        border-color: var(--secondary);
+        outline: none;
+        box-shadow: 0 0 5px var(--secondary);
+      }
+
+      /* Button */
+      .booking-container button {
+        width: 100%;
+        padding: 12px;
+        background: var(--secondary);
+        color: var(--dark);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+        font-weight: bold;
+        transition: var(--transition);
+      }
+
+      .booking-container button:hover {
+        background: var(--accent);
+        color: #fff;
+        transform: scale(1.05);
+      }
+
+      /* Success/Info Text */
+      .booking-container p {
+        margin-top: 15px;
+        font-size: 14px;
+        color: var(--primary);
+        display: none;
+      }
+      /* Contact Section */
+      .contact-section {
+        padding: 5rem 0;
+        background: white;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .contact-info {
+        padding: 2rem;
+        background: var(--light);
+        border-radius: var(--border-radius);
+      }
+
+      .contact-info h3 {
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        font-family: "Playfair Display", serif;
+      }
+
+      .contact-detail {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .contact-detail:hover {
+        transform: translateX(5px);
+        box-shadow: var(--shadow);
+      }
+
+      .contact-detail i {
+        color: var(--secondary);
+        font-size: 1.2rem;
+        width: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav-container">
+        <div class="logo">
+          <a href="index.html">Hotel <span>IP</span> Residency</a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <!-- Booking link -->
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="booking">
+      <div class="booking-container">
+        <h2>Book Your Stay</h2>
+        <form id="bookingForm">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="tel" placeholder="Phone Number" required />
+          <select required>
+            <option value="">Select Room Type</option>
+            <option>Single Room</option>
+            <option>Double Room</option>
+            <option>Luxury Suite</option>
+          </select>
+          <input type="date" required />
+          <button type="submit">Confirm Booking</button>
+        </form>
+        <p id="successMsg">✅ Your booking is confirmed!</p>
+      </div>
+    </section>
+
+    <script>
+      function submitBooking(event) {
+        event.preventDefault(); // prevent page reload
+        document.getElementById("successMsg").style.display = "block";
+      }
+    </script>
+    <script>
+      // Show success message on form submit
+      const form = document.getElementById("bookingForm");
+      const successMsg = document.getElementById("successMsg");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // prevent page refresh
+        successMsg.style.display = "block"; // show confirmation
+        form.reset(); // clear form
+      });
+    </script>
+    
+  </body>
+</html>

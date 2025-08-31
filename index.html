@@ -1,0 +1,1093 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel IP Residency - Luxury Stay Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c5530;
+            --secondary: #d4af37;
+            --accent: #8b4513;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333333;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 15px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .book-now-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .book-now-btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                       url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/147fdea8-67ae-4026-99c9-946bf23c865c.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .feature i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        /* Rooms Section */
+        .rooms {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .room-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .room-card:hover .room-image img {
+            transform: scale(1.1);
+        }
+
+        .room-content {
+            padding: 1.5rem;
+        }
+
+        .room-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-price {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .room-features {
+            margin-bottom: 1rem;
+        }
+
+        .room-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .room-feature i {
+            color: var(--secondary);
+            width: 16px;
+        }
+
+        /* Amenities Section */
+        .amenities {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            background: var(--light);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary);
+        }
+
+        .amenity-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .amenity-card:hover .amenity-icon {
+            transform: scale(1.1);
+        }
+
+        .amenity-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a28 100%);
+            color: white;
+        }
+
+        .booking-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: white;
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+            grid-column: 1 / -1;
+        }
+
+        .submit-btn:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        /* Comments */
+        .box10,
+.box11 {
+  height: 250px;
+  width: 500px;
+  padding: 20px;
+  background-color: whitesmoke;
+  border: 2px solid transparent;
+  margin: auto;
+  margin-top: 100px;
+  transition: transform 0.3s ease-in-out;
+}
+.box10:hover,
+.box11:hover {
+  transform: scale(1.1); 
+}
+.icon {
+  color: peru;
+  font-size: 0.85rem;
+}
+
+.review-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.img1 {
+  background-image: url(images/comment1.png);
+    position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  scroll-behavior: smooth;
+}
+
+.img2 {
+  background-image: url(images/comment2.png);
+    position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  scroll-behavior: smooth;
+}
+
+.comments h1 {
+  display: grid;
+  place-items: center;
+  margin-top: 300px;
+}
+
+.comments p {
+  display: grid;
+  place-items: center;
+}
+
+.review {
+  display: flex;
+}
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            padding: 2rem;
+            background: var(--light);
+            border-radius: var(--border-radius);
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .contact-detail:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-detail i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Loading states and messages */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Form enhancements */
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        input[type="date"] {
+            cursor: pointer;
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Hotel <span>IP</span> Residency</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- <button class="book-now-btn" onclick="scrollToBooking()">Book Now</button> -->
+             <button class="book-now-btn" onclick="window.location.href='login.html'">Book Now</button>
+
+            
+        </div>
+    </header>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content animate">
+                <h1>Experience Luxury Redefined</h1>
+                <p>Discover the perfect blend of comfort, elegance, and exceptional service at Hotel IP Residency. Your home away from home.</p>
+                <button class="book-now-btn" onclick="window.location.href='login.html'">Reserve Your Stay</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Our Hotel</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc7f7630-6253-4a0a-9d61-43f3c113a8ed.png" alt="Elegant hotel lobby with modern decor and comfortable seating areas at Hotel IP Residency">
+                </div>
+                <div class="about-text">
+                    <h3>Welcome to Excellence</h3>
+                    <p>Hotel IP Residency stands as a beacon of luxury and comfort in the heart of the city. With over 20 years of hospitality experience, we pride ourselves on delivering unforgettable experiences to our guests.</p>
+                    <p>Our commitment to excellence is reflected in every detail, from our meticulously designed rooms to our world-class amenities and exceptional service.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Concierge Service</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Free High-Speed WiFi</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fine Dining Restaurant</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fitness Center &amp; Spa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="rooms">
+        <div class="container">
+            <h2 class="section-title">Luxurious Accommodations</h2>
+            <div id="rooms-container" class="rooms-grid">
+                <!-- Rooms will be loaded dynamically from API -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities">
+        <div class="container">
+            <h2 class="section-title">Our Premium Amenities</h2>
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Infinity Pool</h3>
+                    <p>Stunning rooftop infinity pool with panoramic city views</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Fine Dining</h3>
+                    <p>World-class restaurant serving international cuisine</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Luxury Spa</h3>
+                    <p>Relaxing spa treatments and massage therapies</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness Center</h3>
+                    <p>State-of-the-art gym equipment and personal trainers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="container">
+            <h2 class="section-title">Book Your Stay</h2>
+            <div class="booking-container">
+                <form id="bookingForm" class="booking-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="room_type">Room Type *</label>
+                        <select id="room_type" name="room_type" required="">
+                            <option value="">Select Room Type</option>
+                            <!-- Options will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="check_in">Check-in Date *</label>
+                        <input type="date" id="check_in" name="check_in" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="check_out">Check-out Date *</label>
+                        <input type="date" id="check_out" name="check_out" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="6" value="2">
+                    </div>
+                    <div class="form-group">
+                        <label for="special_requests">Special Requests</label>
+                        <textarea id="special_requests" name="special_requests" rows="3" placeholder="Any special requests or requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBooking">
+                        <span id="submitText">Confirm Booking</span>
+                        <span id="loadingSpinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Processing...
+                        </span>
+                    </button>
+                </form>
+                <div id="bookingMessage"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/147fdea8-67ae-4026-99c9-946bf23c865c.png" alt="Hotel exterior with modern architecture and beautiful landscaping">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc7f7630-6253-4a0a-9d61-43f3c113a8ed.png" alt="Elegant hotel lobby with luxurious seating and modern decor">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5d060086-d2b5-4f62-8bdd-5e8b63a3563c.png" alt="Deluxe room with comfortable bed and modern amenities">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2ef1deea-a921-4d15-a31c-014e5d360122.png" alt="Executive suite with separate living area and premium furnishings">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0d0f9ade-9486-4f3d-b4e4-ae24901ae30d.png" alt="Presidential suite with opulent decor and spacious layout">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/684d22b9-b1c3-42b4-96d1-5c7d1f12c077.png" alt="Hotel restaurant with elegant dining setup and ambient lighting">
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <Section class="comments">
+            <div class="container">
+                <h2 class="section-title">What Our Customer Says</h2>
+    
+                <div class="review">
+                    <div class="box10">
+                        <div class="img1 review-img"></div>
+                        <p>Absolutely loved my stay at Hotel IP Residency! The rooms were spotless, 
+                            and the staff was incredibly welcoming. Will definitely visit again.
+                            The food in the hotel restaurant was delicious and the service was top-notch.
+                        </p>
+                        <h4>Cristine Barkely</h4>
+                        <div class="icon">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="box11">
+                        <div class="img2 review-img"></div>
+                        <p>Hotel IP Residency exceeded all my expectations. From the warm welcome to the cozy rooms, 
+                            everything was perfect. I felt right at home.Loved the attention to detail and the calm environment. Will come back for sure.</p>
+                        <h4>Bernadette</h4>
+                        <div class="icon">
+                            <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+        </Section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>123 Luxury Street, City Center, 10001</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>info@hotelipresidency.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Reception Hours</strong>
+                            <p>24/7 Available</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-container">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contact_name" style="color: var(--text);">Your Name *</label>
+                            <input type="text" id="contact_name" name="name" required="" style="background: white;">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_email" style="color: var(--text);">Email Address *</label>
+                            <input type="email" id="contact_email" name="email" required="" style="background: white;">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_subject" style="color: var(--text);">Subject</label>
+                            <input type="text" id="contact_subject" name="subject" style="background: white;">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_message" style="color: var(--text);">Message *</label>
+                            <textarea id="contact_message" name="message" rows="5" required="" style="background: white;"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" style="background: var(--primary);">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="contactMessage"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Hotel IP Residency</h3>
+                    <p>Experience luxury redefined with our world-class accommodations and exceptional service.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#home" style="color: white; text-decoration: none;">Home</a></p>
+                    <p><a href="#rooms" style="color: white; text-decoration: none;">Rooms &amp; Suites</a></p>
+                    <p><a href="#amenities" style="color: white; text-decoration: none;">Amenities</a></p>
+                    <p><a href="#contact" style="color: white; text-decoration: none;">Contact</a></p>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Street, City Center</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@hotelipresidency.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Hotel IP Residency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+
+
+
+</body></html>

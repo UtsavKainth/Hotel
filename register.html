@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <style>
+      :root {
+        --primary: #2c5530; /* dark green */
+        --secondary: #d4af37; /* gold */
+        --accent: #8b4513; /* brown */
+        --light: #f8f9fa; /* light background */
+        --dark: #2c3e50; /* dark blue-gray */
+        --text: #333333; /* default text */
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        --border-radius: 15px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: var(--light);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 80px; /* keep space for navbar */
+        color: var(--text);
+      }
+
+      /* Navbar */
+      header {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        padding: 10px 30px;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .logo a {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: var(--secondary);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: var(--transition);
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: var(--secondary);
+        transition: var(--transition);
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary);
+      }
+
+      /* Register Form Container */
+      .register-container {
+        background: var(--light);
+        padding: 40px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        width: 380px;
+        text-align: center;
+        transition: var(--transition);
+        margin: auto;
+      }
+
+      .register-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .register-container h2 {
+        margin-bottom: 20px;
+        color: var(--primary);
+        font-size: 26px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      /* Input fields */
+      .register-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 12px 0;
+        border: 1px solid var(--accent);
+        border-radius: var(--border-radius);
+        font-size: 15px;
+        color: var(--dark);
+        transition: var(--transition);
+        background: #fff;
+      }
+
+      .register-container input:focus {
+        border-color: var(--secondary);
+        outline: none;
+        box-shadow: 0 0 6px var(--secondary);
+      }
+
+      /* ✅ Success & ❌ Error States */
+      .register-container input.success {
+        border-color: green;
+        box-shadow: 0 0 6px rgba(0, 128, 0, 0.5);
+      }
+
+      .register-container input.error {
+        border-color: red;
+        box-shadow: 0 0 6px rgba(255, 0, 0, 0.5);
+      }
+
+      /* Button */
+      .register-container button {
+        width: 100%;
+        padding: 12px;
+        background: var(--secondary);
+        color: var(--dark);
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+        font-weight: bold;
+        transition: var(--transition);
+      }
+
+      .register-container button:hover {
+        background: var(--accent);
+        color: #fff;
+        transform: scale(1.05);
+      }
+
+      /* Info/Success/Error Messages */
+      .register-container p {
+        margin-top: 15px;
+        font-size: 14px;
+        display: none;
+        font-weight: bold;
+      }
+
+      .register-container p.error {
+        color: red;
+        display: block;
+      }
+
+      .register-container p.success {
+        color: green;
+        display: block;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <div class="container nav-container">
+        <!-- Logo Clickable -->
+        <div class="logo">
+          <a href="index.html" style="text-decoration: none; color: inherit">
+            Hotel <span>IP</span> Residency
+          </a>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="register-container">
+      <h2 style="color: var(--primary); margin-bottom: 1.5rem">Register</h2>
+      <form id="registerForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+          required
+        />
+
+        <button type="submit">Register</button>
+        <p id="registerMessage"></p>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // prevent page refresh
+
+          const name = document.getElementById("name").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const password = document.getElementById("password").value.trim();
+          const confirmPassword = document
+            .getElementById("confirmPassword")
+            .value.trim();
+          const message = document.getElementById("registerMessage");
+
+          // Check if passwords match
+          if (password !== confirmPassword) {
+            message.textContent = "❌ Passwords do not match!";
+            message.style.color = "red";
+            message.style.display = "block";
+            return;
+          }
+
+          // Check if email already exists
+          const existingEmail = localStorage.getItem("userEmail");
+          if (existingEmail === email) {
+            message.textContent =
+              "❌ This email is already registered. Please login.";
+            message.style.color = "red";
+            message.style.display = "block";
+            return;
+          }
+
+          // Save new user data to localStorage
+          localStorage.setItem("userName", name);
+          localStorage.setItem("userEmail", email);
+          localStorage.setItem("userPassword", password);
+
+          // Show success message
+          message.textContent = "✅ Registration successful!";
+          message.style.color = "green";
+          message.style.display = "block";
+
+          // Clear form fields
+          this.reset();
+
+          // Redirect to login page after 1.5 seconds
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 1500);
+        });
+    </script>
+  </body>
+</html>
