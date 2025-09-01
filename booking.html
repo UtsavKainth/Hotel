@@ -257,23 +257,39 @@
       </div>
     </section>
 
-    <script>
-      function submitBooking(event) {
-        event.preventDefault(); // prevent page reload
-        document.getElementById("successMsg").style.display = "block";
-      }
-    </script>
-    <script>
-      // Show success message on form submit
-      const form = document.getElementById("bookingForm");
-      const successMsg = document.getElementById("successMsg");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault(); // prevent page refresh
-        successMsg.style.display = "block"; // show confirmation
-        form.reset(); // clear form
-      });
-    </script>
     
+    <script>
+  // Get form and success message
+  const form = document.getElementById("bookingForm");
+  const successMsg = document.getElementById("successMsg");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // prevent page refresh
+
+    // Collect form values
+    const fullName = form.querySelector('input[type="text"]').value.trim();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const phone = form.querySelector('input[type="tel"]').value.trim();
+    const roomType = form.querySelector("select").value;
+    const checkInDate = form.querySelector('input[type="date"]').value;
+
+    // Store data in an object
+    const bookingData = {
+      fullName,
+      email,
+      phone,
+      roomType,
+      checkInDate,
+    };
+
+    // Show confirmation
+    successMsg.style.display = "block";
+    form.reset();
+
+    // ✅ Print booking details in console
+    console.log("📦 Booking Details:", bookingData);
+  });
+</script>
+
   </body>
 </html>
