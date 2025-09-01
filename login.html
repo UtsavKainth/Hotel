@@ -220,40 +220,42 @@
       <p>Don’t have an account? <a href="register.html">Register</a></p>
     </div>
 
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+    
+  <script>
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-          const email = document.getElementById("loginEmail").value.trim();
-          const password = document
-            .getElementById("loginPassword")
-            .value.trim();
-          const message = document.getElementById("loginMessage");
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const message = document.getElementById("loginMessage");
 
-          // Get stored user from localStorage
-          const registeredEmail = localStorage.getItem("userEmail");
-          const registeredPassword = localStorage.getItem("userPassword");
+    // Get all users from localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    console.log("📦 Users from localStorage:", users);
 
-          if (!registeredEmail || !registeredPassword) {
-            message.textContent = "❌ Please register first before logging in.";
-            message.style.color = "red";
-            return;
-          }
+    // Debugging: show entered details
+    console.log("📝 Entered -> Email:", email, " Password:", password);
 
-          if (email === registeredEmail && password === registeredPassword) {
-            message.textContent = "✅ Login Successful!";
-            message.style.color = "green";
+    // Check if entered credentials match
+    const validUser = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
-            setTimeout(() => {
-              window.location.href = "booking.html"; // redirect after success
-            }, 1000);
-          } else {
-            message.textContent = "❌ Incorrect email or password.";
-            message.style.color = "red";
-          }
-        });
-    </script>
+    console.log("🔑 Matched user:", validUser);
+
+    if (validUser) {
+      message.textContent = "✅ Login Successful!";
+      message.style.color = "green";
+
+      setTimeout(() => {
+        window.location.href = "booking.html"; // redirect after success
+      }, 1000);
+    } else {
+      message.textContent = "❌ Incorrect email or password.";
+      message.style.color = "red";
+    }
+  });
+</script>
+
   </body>
 </html>
