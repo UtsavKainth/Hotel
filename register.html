@@ -235,56 +235,60 @@
       </form>
     </div>
 
-    <script>
-      document
-        .getElementById("registerForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault(); // prevent page refresh
+    
 
-          const name = document.getElementById("name").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const password = document.getElementById("password").value.trim();
-          const confirmPassword = document
-            .getElementById("confirmPassword")
-            .value.trim();
-          const message = document.getElementById("registerMessage");
+<script>
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // prevent page refresh
 
-          // Check if passwords match
-          if (password !== confirmPassword) {
-            message.textContent = "❌ Passwords do not match!";
-            message.style.color = "red";
-            message.style.display = "block";
-            return;
-          }
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const message = document.getElementById("registerMessage");
 
-          // Check if email already exists
-          const existingEmail = localStorage.getItem("userEmail");
-          if (existingEmail === email) {
-            message.textContent =
-              "❌ This email is already registered. Please login.";
-            message.style.color = "red";
-            message.style.display = "block";
-            return;
-          }
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      message.textContent = "❌ Passwords do not match!";
+      message.style.color = "red";
+      message.style.display = "block";
+      return;
+    }
 
-          // Save new user data to localStorage
-          localStorage.setItem("userName", name);
-          localStorage.setItem("userEmail", email);
-          localStorage.setItem("userPassword", password);
+    // Get all users from localStorage (if none, use empty array)
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    console.log("📦 Users before registration:", users);
 
-          // Show success message
-          message.textContent = "✅ Registration successful!";
-          message.style.color = "green";
-          message.style.display = "block";
+    // Check if email already exists
+    const existingUser = users.find(user => user.email === email);
+    if (existingUser) {
+      message.textContent = "❌ This email is already registered. Please login.";
+      message.style.color = "red";
+      message.style.display = "block";
+      return;
+    }
 
-          // Clear form fields
-          this.reset();
+    // Add new user to users array
+    const newUser = { name, email, password };
+    users.push(newUser);
 
-          // Redirect to login page after 1.5 seconds
-          setTimeout(() => {
-            window.location.href = "login.html";
-          }, 1500);
-        });
-    </script>
+    // Save updated users array to localStorage
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // ✅ Extra console logs for clarity
+    console.log("✅ New user registered:", newUser);
+    console.log("📦 Users after registration:", users);
+
+    // Show success message + login link
+    message.innerHTML = "✅ Registration successful! <br> <a href='login.html'>Click here to login</a>";
+    message.style.color = "green";
+    message.style.display = "block";
+
+    // Clear form fields
+    this.reset();
+  });
+</script>
+
+
   </body>
 </html>
