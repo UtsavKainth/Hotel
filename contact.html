@@ -212,7 +212,7 @@
     </div>
   </main>
 
-  <script>
+  <!-- <script>
     const contactForm = document.getElementById("contactForm");
     const contactMsg = document.getElementById("contactMessage");
 
@@ -221,7 +221,37 @@
       contactMsg.style.display = "block";
       contactForm.reset();
     });
-  </script>
+  </script> -->
+  <script>
+  const contactForm = document.getElementById("contactForm");
+  const contactMsg = document.getElementById("contactMessage");
+
+  contactForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Collect form values
+    const name = document.getElementById("contact_name").value.trim();
+    const email = document.getElementById("contact_email").value.trim();
+    const subject = document.getElementById("contact_subject").value.trim();
+    const message = document.getElementById("contact_message").value.trim();
+
+    // Store values in an object
+    const contactData = {
+      name,
+      email,
+      subject,
+      message
+    };
+
+    // ✅ Show success message
+    contactMsg.style.display = "block";
+    contactForm.reset();
+
+    // ✅ Print in console
+    console.log("📩 Contact Form Submission:", contactData);
+  });
+</script>
+
 
 </body>
 </html>
